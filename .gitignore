@@ -1,0 +1,17 @@
+# Ignore everything 
+* 
+
+# Except... 
+!.git* 
+!.git/** 
+!README*
+!util*
+!util/**
+!software*
+!software/**
+!hardware*
+!hardware/**
+!firmware
+!firmware/**
+!documentation
+!documentation/** 

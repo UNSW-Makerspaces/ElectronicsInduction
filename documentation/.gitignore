@@ -1,0 +1,7 @@
+* 
+!.gitignore
+!*.md
+!pages
+!pages/**
+!assets
+!assets/** 
