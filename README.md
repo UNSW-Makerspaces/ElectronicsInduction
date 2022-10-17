@@ -21,9 +21,7 @@
 
 ## About 
 
-## Hardware 
-
-## Firmware 
+## Frequently Asked Questions
 
 ## Acknowledgments 
 

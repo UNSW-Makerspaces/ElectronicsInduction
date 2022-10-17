@@ -1,0 +1,7 @@
+*
+!.gitignore
+!*.md 
+!stl
+!stl/**
+!f3d
+!f3d/**
