@@ -19,9 +19,7 @@ const LED_FORMATS = [
 ];
 
 const BUTTON_LAYOUTS = [
-	{ label: '8-Button Layout', value: 0 },
-	{ label: 'Hit Box Layout', value: 1 },
-	{ label: 'WASD Layout', value: 2 },
+	{ label: 'Basic Layout', value: 2 },
 ];
 
 const defaultValue = {
@@ -29,8 +27,7 @@ const defaultValue = {
 	brightnessSteps: 5,
 	dataPin: -1,
 	ledFormat: 0,
-	ledLayout: 0,
-	ledsPerButton: 2,
+	ledLayout: 0
 };
 
 let usedPins = [];
@@ -38,11 +35,9 @@ let usedPins = [];
 const schema = yup.object().shape({
 	brightnessMaximum : yup.number().required().positive().integer().min(0).max(255).label('Max Brightness'),
 	brightnessSteps   : yup.number().required().positive().integer().min(1).max(10).label('Brightness Steps'),
-	// eslint-disable-next-line no-template-curly-in-string
 	dataPin           : yup.number().required().min(-1).max(29).test('', '${originalValue} is already assigned!', (value) => usedPins.indexOf(value) === -1).label('Data Pin'),
 	ledFormat         : yup.number().required().positive().integer().min(0).max(3).label('LED Format'),
 	ledLayout         : yup.number().required().positive().integer().min(0).max(2).label('LED Layout'),
-	ledsPerButton      : yup.number().required().positive().integer().min(1).label('LEDs Per Pixel'),
 });
 
 const getLedButtons = (buttonLabels, map, excludeNulls) => {
@@ -179,17 +174,6 @@ export default function LEDConfigPage() {
 							</FormSelect>
 						</Row>
 						<Row>
-							<FormControl type="number"
-								label="LEDs Per Button"
-								name="ledsPerButton"
-								className="form-control-sm"
-								groupClassName="col-sm-4 mb-3"
-								value={values.ledsPerButton}
-								error={errors.ledsPerButton}
-								isInvalid={errors.ledsPerButton}
-								onChange={handleChange}
-								min={1}
-							/>
 							<FormControl type="number"
 								label="Max Brightness"
 								name="brightnessMaximum"

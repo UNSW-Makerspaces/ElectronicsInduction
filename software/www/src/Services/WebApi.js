@@ -7,51 +7,15 @@ export const baseButtonMappings = {
   Down:  { pin: -1, error: null },
   Left:  { pin: -1, error: null },
   Right: { pin: -1, error: null },
-  B1:    { pin: -1, error: null },
-  B2:    { pin: -1, error: null },
-  B3:    { pin: -1, error: null },
-  B4:    { pin: -1, error: null },
-  L1:    { pin: -1, error: null },
-  R1:    { pin: -1, error: null },
-  L2:    { pin: -1, error: null },
-  R2:    { pin: -1, error: null },
-  S1:    { pin: -1, error: null },
-  S2:    { pin: -1, error: null },
-  L3:    { pin: -1, error: null },
-  R3:    { pin: -1, error: null },
-  A1:    { pin: -1, error: null },
-  A2:    { pin: -1, error: null },
+  A:    { pin: -1, error: null },
+  B:    { pin: -1, error: null }
+
 };
 
 async function resetSettings() {
   return axios.get(`${baseUrl}/api/resetSettings`)
 	.then((response) => response.data)
 	.catch(console.error);
-}
-
-async function getDisplayOptions() {
-  return axios.get(`${baseUrl}/api/getDisplayOptions`)
-	.then((response) => {
-	  if (response.data.i2cAddress)
-		response.data.i2cAddress = '0x' + response.data.i2cAddress.toString(16);
-
-	  return response.data;
-	})
-	.catch(console.error);
-}
-
-async function setDisplayOptions(options) {
-  let newOptions = { ...options };
-  newOptions.i2cAddress = parseInt(options.i2cAddress);
-  return axios.post(`${baseUrl}/api/setDisplayOptions`, newOptions)
-	.then((response) => {
-	  console.log(response.data);
-	  return true;
-	})
-	.catch((err) => {
-	  console.error(err);
-	  return false;
-	});
 }
 
 async function getGamepadOptions() {
@@ -120,8 +84,6 @@ async function setPinMappings(mappings) {
 
 const WebApi = {
   resetSettings,
-  getDisplayOptions,
-  setDisplayOptions,
   getGamepadOptions,
   setGamepadOptions,
   getLedOptions,

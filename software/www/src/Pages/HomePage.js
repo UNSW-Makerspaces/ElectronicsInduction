@@ -11,7 +11,7 @@ export default function HomePage() {
 
 	return (
 		<div>
-			<h1>PicoGamePad v3A Configuration Interface API (indev)</h1>
+			<h1>PicoGamePad Configuration Interface API (indev)</h1>
 			<p>Please select a menu option to proceed.</p>
 			<Section title="Firmware Version">
 				<div className="card-body">

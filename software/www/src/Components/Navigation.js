@@ -18,7 +18,7 @@ const Navigation = (props) => {
 	return (
 		<Navbar collapseOnSelect bg="dark" variant="dark" expand="md" fixed="top">
 			<Navbar.Brand href="/">
-				<img src="../Assets/logo.png" className="title-logo" alt="logo" />{' '}PicoGamePad Configuration API
+				<img src="./logo.png" className="title-logo" alt="logo" />{' '}Gamepad Configuration Tool
 			</Navbar.Brand>
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="me-auto">
@@ -27,7 +27,6 @@ const Navigation = (props) => {
 					<NavDropdown title="Configuration">
 						<NavDropdown.Item as={NavLink} exact={true} to="/pin-mapping">Pin Mapping</NavDropdown.Item>
 						<NavDropdown.Item as={NavLink} exact={true} to="/led-config">LED Configuration</NavDropdown.Item>
-						<NavDropdown.Item as={NavLink} exact={true} to="/display-config">Display Configuration</NavDropdown.Item>
 					</NavDropdown>
 					<NavDropdown title="DANGER ZONE" className="btn-danger danger-zone">
 						<NavDropdown.Item as={NavLink} exact={true} to="/reset-settings">Reset Settings</NavDropdown.Item>

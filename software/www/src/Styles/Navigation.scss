@@ -1,5 +1,5 @@
 .title-logo {
-	height: 24px;
+	height: 36px;
 	margin: -6px 8px 0 12px;
 }
 
@@ -21,17 +21,3 @@
 	border-radius: 4px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .title-logo {
-    animation: clockwise-spin infinite 20s linear;
-  }
-}
-
-@keyframes clockwise-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

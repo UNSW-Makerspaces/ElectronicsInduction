@@ -7,14 +7,11 @@ import WebApi from '../Services/WebApi';
 
 const INPUT_MODES = [
 	{ label: 'XInput', value: 0 },
-	{ label: 'Nintendo Switch', value: 1 },
-	{ label: 'PS3/DirectInput', value: 2 },
+	{ label: 'PicoGamePad', value: 1} 
 ];
 
 const DPAD_MODES = [
-	{ label: 'D-pad', value: 0 },
-	{ label: 'Left Analog', value: 1 },
-	{ label: 'Right Analog', value: 2 },
+	{ label: 'D-pad', value: 0 }
 ];
 
 const SOCD_MODES = [

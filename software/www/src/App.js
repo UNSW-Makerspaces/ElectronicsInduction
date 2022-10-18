@@ -28,7 +28,6 @@ import HomePage from './Pages/HomePage'
 import PinMappingPage from "./Pages/PinMapping";
 import ResetSettingsPage from './Pages/ResetSettingsPage';
 import SettingsPage from './Pages/SettingsPage';
-import DisplayConfigPage from './Pages/DisplayConfig';
 import LEDConfigPage from './Pages/LEDConfigPage';
 import { loadButtonLabels } from './Services/Storage';
 
@@ -42,7 +41,7 @@ import './Styles/App.scss';
  *	Application Body
  */
 const App = () => {
-	const [buttonLabels, setButtonLabels] = useState(loadButtonLabels() ?? 'PicoGamePad-v3A');
+	const [buttonLabels, setButtonLabels] = useState(loadButtonLabels() ?? 'PicoGamePad');
 
 	const appData = {
 		buttonLabels,

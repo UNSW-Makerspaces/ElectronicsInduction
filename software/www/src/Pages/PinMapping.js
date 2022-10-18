@@ -8,7 +8,7 @@ import boards from '../Data/Boards.json';
 import BUTTONS from '../Data/Buttons.json';
 import './PinMappings.scss';
 
-const requiredButtons = ['B1', 'B2', 'B3', 'S2'];
+const requiredButtons = ['A', 'B'];
 
 export default function PinMappingPage() {
 	const { buttonLabels } = useContext(AppContext);

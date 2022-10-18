@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 export const defaultAppData = {
-	buttonLabels: 'PicoGamePad-v3A',
+	buttonLabels: 'PicoGamePad',
 };
 
 export const AppContext = createContext(defaultAppData);

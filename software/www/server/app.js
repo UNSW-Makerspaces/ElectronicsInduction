@@ -9,24 +9,13 @@ const controllers = require('../src/Data/Controllers.json');
 
 const port = process.env.PORT || 8080;
 const baseButtonMappings = {
-	Up:    { pin: -1, error: null },
-	Down:  { pin: -1, error: null },
-	Left:  { pin: -1, error: null },
-	Right: { pin: -1, error: null },
-	B1:    { pin: -1, error: null },
-	B2:    { pin: -1, error: null },
-	B3:    { pin: -1, error: null },
-	B4:    { pin: -1, error: null },
-	L1:    { pin: -1, error: null },
-	R1:    { pin: -1, error: null },
-	L2:    { pin: -1, error: null },
-	R2:    { pin: -1, error: null },
-	S1:    { pin: -1, error: null },
-	S2:    { pin: -1, error: null },
-	L3:    { pin: -1, error: null },
-	R3:    { pin: -1, error: null },
-	A1:    { pin: -1, error: null },
-	A2:    { pin: -1, error: null },
+	Up:    { pin: 1, error: null },
+	Down:  { pin: 2, error: null },
+	Left:  { pin: 3, error: null },
+	Right: { pin: 4, error: null },
+	A:    { pin: 5, error: null },
+	B:    { pin: 6, error: null }
+
 };
 
 const app = express();
@@ -49,16 +38,16 @@ app.get('/api/getGamepadOptions', (req, res) => {
 	return res.send({
 		dpadMode: 0,
 		inputMode: 1,
-		socdMode: 2,
+		socdMode: 2
 	});
 });
 
 app.get('/api/getLedOptions', (req, res) => {
 	console.log('/api/getLedOptions');
 	let usedPins = [];
-	for (let prop of Object.keys(controllers['PicoGamePad-v3A']))
-		if (!isNaN(parseInt(controllers['PicoGamePad-v3A'][prop])))
-			usedPins.push(parseInt(controllers['PicoGamePad-v3A'][prop]));
+	for (let prop of Object.keys(controllers['PicoGamePad']))
+		if (!isNaN(parseInt(controllers['PicoGamePad'][prop])))
+			usedPins.push(parseInt(controllers['PicoGamePad'][prop]));
 
 	return res.send({
 		brightnessMaximum: 255,
@@ -72,20 +61,8 @@ app.get('/api/getLedOptions', (req, res) => {
 			Down: 1,
 			Left: 0,
 			Right: 2,
-			B1: 8,
-			B2: 9,
-			B3: 4,
-			B4: 5,
-			L1: 7,
-			R1: 6,
-			L2: 11,
-			R2: 10,
-			S1: null,
-			S2: null,
-			L3: null,
-			R3: null,
-			A1: null,
-			A2: null,
+			A: 8,
+			B: 9
 		},
 		usedPins,
 	});
@@ -94,9 +71,9 @@ app.get('/api/getLedOptions', (req, res) => {
 app.get('/api/getPinMappings', (req, res) => {
 	console.log('/api/getPinMappings');
 	let mappings = { ...baseButtonMappings };
-	for (let prop of Object.keys(controllers['PicoGamePad-v3A'])) {
+	for (let prop of Object.keys(controllers['PicoGamePad'])) {
 		if (mappings[prop])
-			mappings[prop] = parseInt(controllers['PicoGamePad-v3A'][prop]);
+			mappings[prop] = parseInt(controllers['PicoGamePad'][prop]);
 	}
 
 	return res.send(mappings);
