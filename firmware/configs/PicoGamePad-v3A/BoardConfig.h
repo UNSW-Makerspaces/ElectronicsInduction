@@ -7,8 +7,8 @@
 #define PIN_DPAD_DOWN   3           // DOWN
 #define PIN_DPAD_RIGHT  4           // RIGHT
 #define PIN_DPAD_LEFT   5           // LEFT
-#define PIN_BUTTON_A    -1          // 
-#define PIN_BUTTON_B    -1          //
+#define PIN_BUTTON_A    -1           
+#define PIN_BUTTON_B    -1          
 #define PIN_BUTTON_START -1 
 #define PIN_BUTTON_SELECT -1 
 

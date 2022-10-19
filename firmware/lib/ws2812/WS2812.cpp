@@ -14,7 +14,7 @@
  *
  */
 
-#include "WS2812.hpp"
+#include "WS2812.h"
 #include "WS2812.pio.h"
 
 // ================================================================================================
@@ -41,7 +41,7 @@ WS2812::WS2812(
         uint length, 
         PIO pio, 
         uint sm, 
-        WS2812Format format) {
+        WS2812DataFormat format) {
 
     switch (format) {
         case FORMAT_RGB:
@@ -250,15 +250,14 @@ void WS2812::fill(colourData color, uint first, uint count) {
 // * - *
 
 // FIXME: 
-// void WS2812::show() {
-//     #ifdef DEBUG
-//     for (uint i = 0; i < length; i++) {
-//         printf("WS2812 / Put data: %08X\n", data[i]);
-//     }
-//     #endif
-//     for (uint i = 0; i < length; i++) {
-//         pio_sm_put_blocking(pio, sm, data[i]);
-//     }
-// }
-//
-// ^ Standardize logging format 
+ void WS2812::show() {
+     #ifdef DEBUG
+     for (uint i = 0; i < length; i++) {
+         printf("WS2812 / Put data: %08X\n", data[i]);
+     }
+     #endif
+     for (uint i = 0; i < length; i++) {
+         pio_sm_put_blocking(pio, sm, data[i]);
+     }
+ }
+

@@ -1,4 +1,4 @@
-// lib/ws2812.h
+// lib/WS2812.h
 
 /*
  *  Author:     Michael Lloyd (micl.dev)
@@ -14,8 +14,8 @@
  *
  */
 
-#ifndef _PGP_ws2812_H 
-#define _PGP_ws2812_H
+#ifndef _PGP_WS2812_H 
+#define _PGP_WS2812_H
 
 #include "pico/types.h"
 #include "hardware/pio.h"
@@ -29,46 +29,43 @@
 // WS2812 value selections 
 // =====================
 // Bitfield colour enum 
-using WS2812DataByte = enum _led_byte_data { 
-        NONE    =   0x0     , 
-        RED     =   0x1     ,
-        GREEN   =   0x2     ,
-        BLUE    =   0x3     ,
-        WHITE   =   0x4
-}; 
+typedef uint8_t    colourValue; 
+typedef uint32_t   colourData;
 
-// =====================
-// LED format select  
-using WS2812Format = enum _led_data_format {
+class WS2812 {
+
+        public:
+        enum WS2812DataByte {
+        NONE    =   0     , 
+        RED     =   1     ,
+        GREEN   =   2     ,
+        BLUE    =   3     ,
+        WHITE   =   4
+
+        };
+        enum WS2812DataFormat {
+
         FORMAT_RGB  =   0   ,
         FORMAT_GRB  =   1   ,
         FORMAT_WRGB =   2
-};
-
-typedef uint8_t     _colour_value   colourValue; 
-typedef uint32_t    _colour_data    colourData;
-
-typedef class _ws2812_c {
-
-        public:
-
+        };
           // ========================================================
           // Object instantiation methods  
 
           // =====================
           // Constructors  
 
-          ws2812(uint pin, uint length, PIO pio, uint sm);
+          WS2812(uint pin, uint length, PIO pio, uint sm);
 
-          ws2812(uint pin, uint length, PIO pio, uint sm, 
-                          WS2812Format format);
+          WS2812(uint pin, uint length, PIO pio, uint sm, 
+                          WS2812DataFormat format);
 
-          ws2812(uint pin, uint length, PIO pio, uint sm, 
+          WS2812(uint pin, uint length, PIO pio, uint sm, 
                           WS2812DataByte b1, 
                           WS2812DataByte b2, 
                           WS2812DataByte b3);
 
-          ws2812(uint pin, uint length, PIO pio, uint sm, 
+          WS2812(uint pin, uint length, PIO pio, uint sm, 
                           WS2812DataByte b1, 
                           WS2812DataByte b2, 
                           WS2812DataByte b3, 
@@ -76,11 +73,11 @@ typedef class _ws2812_c {
 
           // =====================
           // Destructor 
-          ~ws2812();
+          ~WS2812();
 
           // ========================================================
           // Hexadecimal masking of colours in RGB 
-          static colourMix RGB(
+          static colourData RGB(
                           colourValue red, 
                           colourValue green, 
                           colourValue blue) {
@@ -172,7 +169,7 @@ typedef class _ws2812_c {
 
           colourData convertData(colourData rgbw);
 
-} WS2812;
+};
 
 // * - *
 #endif
